@@ -9,6 +9,7 @@ class RPCServer
     float val1,val2;
     RPCServer()
     {
+        result = "";
         try
         {
             ds=new DatagramSocket(1200);
