@@ -6,19 +6,22 @@ class RPCClient
     {
         try
         {
-            InetAddress ia = InetAddress.getLocalHost();
+            InetAddress ia = InetAddress.getByName("10.106.6.107");  
             DatagramSocket ds = new DatagramSocket();
             DatagramSocket ds1 = new DatagramSocket(1300);
             System.out.println("\nRPC Client\n");
-            System.out.println("Insira a operação (ex: add, sub, mult, div) e os números que deseja calcular \n");
+            System.out.println("Insira a operação (ex: add, sub, mult, div, mod, pow) e os números que deseja calcular \n");
             while (true)
             {
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-                String str = br.readLine();
-                byte b[] = str.getBytes();
+                String str = br.readLine(); //armazena a mensagem
+                byte b[] = str.getBytes(); //Tamanho da mensagem que o cliente enviar
+                //mensagem enviada para o servidor
                 DatagramPacket dp =  new DatagramPacket(b,b.length,ia,1200);
                 ds.send(dp);
-                dp = new DatagramPacket(b,b.length);
+                byte b1[]=new byte[100];
+                dp = new DatagramPacket(b1,b1.length);
+                //mensagem recebida pelo servidor
                 ds1.receive(dp);
                 String s = new String(dp.getData(),0,dp.getLength());
                 System.out.println("\nResultado =" + s +"\n");
@@ -36,3 +39,4 @@ class RPCClient
         new RPCClient();
     }
 }
+
