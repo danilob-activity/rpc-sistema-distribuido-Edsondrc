@@ -9,7 +9,6 @@ class RPCServer
     float val1,val2;
     RPCServer()
     {
-        result = "(Edson) ";
         try
         {
             ds=new DatagramSocket(1200);
@@ -61,6 +60,7 @@ class RPCServer
             {
                 result+= String.valueOf(mod(val1,val2));
             }
+            result = "(Edson) " + result;
             byte b1[]=result.getBytes();
             System.out.println("Size: "+String.valueOf(b1.length)+"\n");
 
