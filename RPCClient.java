@@ -6,7 +6,7 @@ class RPCClient
     {
         try
         {
-            InetAddress ia = InetAddress.getByName("10.106.6.107");  
+            InetAddress ia = InetAddress.getByName("10.106.6.116");  
             DatagramSocket ds = new DatagramSocket();
             DatagramSocket ds1 = new DatagramSocket(1300);
             System.out.println("\nRPC Client\n");
