@@ -9,13 +9,13 @@ class RPCServer
     float val1,val2;
     RPCServer()
     {
-        result = "";
         try
         {
             ds=new DatagramSocket(1200);
             byte b[]=new byte[4096];
             while(true)
             {
+                result = "";
             dp=new DatagramPacket(b,b.length);
             ds.receive(dp);
             str=new String(dp.getData(),0,dp.getLength());
